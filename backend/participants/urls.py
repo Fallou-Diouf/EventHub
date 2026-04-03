@@ -3,5 +3,5 @@ from .views import ParticipantListeCreateView, ParticipantRetrieveUpdateDestroyV
 
 urlpatterns = [
     path('', ParticipantListeCreateView.as_view()),
-    path('<uuid:id>/', ParticipantRetrieveUpdateDestroyView.as_view())
+    path('<uuid:pk>/', ParticipantRetrieveUpdateDestroyView.as_view())
 ]

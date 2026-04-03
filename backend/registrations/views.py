@@ -1,14 +1,14 @@
-from django.shortcuts import render
-from .models import Registration
 from rest_framework import generics
+from .models import Registration
 from .serializers import RegistrationSerializer
 
 # CREATE + READ
-class RegistrationListreCreateView(generics.ListCreateAPIView):
+class RegistrationListCreateView(generics.ListCreateAPIView):
     queryset = Registration.objects.all()
     serializer_class = RegistrationSerializer
-    
-# READ + UPDATE + DELETE
-class RegistrationRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+
+
+# READ + DELETE (PAS UPDATE)
+class RegistrationRetrieveDestroyView(generics.RetrieveDestroyAPIView):
     queryset = Registration.objects.all()
     serializer_class = RegistrationSerializer

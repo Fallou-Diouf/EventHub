@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import RegistrationListreCreateView, RegistrationRetrieveUpdateDestroyView
+from .views import RegistrationListCreateView, RegistrationRetrieveDestroyView
 
 urlpatterns = [
-    path('', RegistrationListreCreateView.as_view()),
-    path('<uuid:id>/', RegistrationRetrieveUpdateDestroyView.as_view())
+    path('', RegistrationListCreateView.as_view()),
+    path('<uuid:pk>/', RegistrationRetrieveDestroyView.as_view()),
 ]

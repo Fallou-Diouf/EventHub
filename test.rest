@@ -1,6 +1,6 @@
 
 ### Get all events
-GET http://127.0.0.1:8000/events/
+GET http://127.0.0.1:8000/events/4f31be20-38e5-425b-b595-90d67dd1180a
 
 ###
 
@@ -10,10 +10,40 @@ Content-Type: application/json
 
 {
   "title": "AI Conference",
-  "description": "Conference about Artificial Intelligence",
-  "date": "2026-07-10",
+  "description": "Conference about Computer Vision",
+  "date": "2026-03-12",
   "location": "Paris",
   "status": "upcoming"
 }
 
 ###
+
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin1234"
+}
+
+###
+POST http://127.0.0.1:8000/participants/
+Content-Type: application/json
+
+{
+  "name": "fadal",
+  "email": "fadal@gmail.com",
+  "phone": "0725365412",
+}
+
+###
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+  "username": "viewer",
+  "password": "viewer"
+}
+
+###
+POST http://127.0.0.1:8000/auth/login/
