@@ -1,12 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Events from "./pages/Events";
-import Participants from "./pages/Participants";
-import Registrations from "./pages/Registrations";
-import EventDetails from "./pages/EventDetails";
-import Dashboard from "./pages/Dashboard";
-import PrivateRoute from "./pages/PrivateRoute";
+import Login from "./components/Login";
+import Events from "./components/Events";
+import Participants from "./components/Participants";
+import Registrations from "./components/Registrations";
+import EventDetails from "./components/EventDetails";
+import Dashboard from "./components/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
