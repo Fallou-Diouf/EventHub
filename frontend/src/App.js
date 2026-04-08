@@ -7,6 +7,7 @@ import Registrations from "./components/Registrations";
 import EventDetails from "./components/EventDetails";
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -60,6 +61,11 @@ function App() {
               <EventDetails />
             </PrivateRoute>
           }
+        />
+
+        <Route 
+          path="/register" 
+          element={<Register />} 
         />
       </Routes>
     </Router>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../style/login.css"
+import "../style/login.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -10,59 +10,48 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("http://127.0.0.1:8000/auth/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+    const res = await fetch("http://127.0.0.1:8000/auth/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-      const data = await response.json();
-      if (response.ok) {
-        localStorage.setItem("token", data.access);
-        localStorage.setItem("role", data.role);
+    const data = await res.json();
 
-        navigate("/dashboard");
-      } else {
-        alert("Login échoué !");
-      }
-
-
-    } catch (error) {
-      console.log("Erreur réseau", error);
+    if (res.ok) {
+      localStorage.setItem("token", data.access);
+      localStorage.setItem("role", data.role);
+      navigate("/dashboard");
+    } else {
+      alert("Login échoué");
     }
   };
 
   return (
     <div className="login-container">
       <form className="login-card" onSubmit={handleLogin}>
-        <h2>🔐 Connexion</h2>
+        <h2>Connexion</h2>
 
-        <div className="form-group">
-          <label>Username</label>
-          <input
-            type="text"
-            placeholder="Entrer votre username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
+        <input
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
-        <div className="form-group">
-          <label>Mot de passe</label>
-          <input
-            type="password"
-            placeholder="Entrer votre mot de passe"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-        <button className="btn primary full" type="submit">
-          Se connecter
-        </button>
+        <button className="btn primary">Se connecter</button>
+
+        <p onClick={() => navigate("/register")} className="link">
+          S'inscrire
+        </p>
       </form>
     </div>
   );
