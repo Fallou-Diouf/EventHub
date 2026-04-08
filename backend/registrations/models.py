@@ -1,14 +1,13 @@
 from django.db import models
 from events.models import Event
 from participants.models import Participant
-import uuid
 
 class Registration(models.Model):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE)
     event = models.ForeignKey(
         Event,
         on_delete=models.CASCADE,
-        related_name="registrations" 
+        related_name="registrations"
     )
     registration_date = models.DateTimeField(auto_now_add=True)
 
@@ -17,4 +16,4 @@ class Registration(models.Model):
         ordering = ['-registration_date']
 
     def __str__(self):
-        return f"{self.participant.name} {self.participant.last_name} → {self.event.title}"
+        return f"{self.participant.name} → {self.event.title}"

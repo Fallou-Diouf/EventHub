@@ -1,0 +1,116 @@
+/* dashboard.css */
+
+/* Container globale */
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header et navigation */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn.logout {
+  margin-left: auto;
+  background: #dc3545;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.logout:hover {
+  background: #b02a37;
+}
+
+/* Dashboard stats */
+.dashboard {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  flex: 1 1 150px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  margin: 0;
+  color: #4f46e5;
+}
+
+.stat-card p {
+  margin: 0.5rem 0 0;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Charts */
+.charts {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* Recent lists */
+.recent-lists {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.recent-lists > div {
+  flex: 1 1 300px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.recent-lists h4 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.recent-lists ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-lists li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.recent-lists li:last-child {
+  border-bottom: none;
+}

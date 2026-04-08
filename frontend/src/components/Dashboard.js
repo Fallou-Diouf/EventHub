@@ -1,3 +1,4 @@
+import "../style/dashboard.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
@@ -22,27 +23,36 @@ function Dashboard() {
 
   // 🔹 LOAD DATA
   useEffect(() => {
-    Promise.all([
-      fetch("http://127.0.0.1:8000/events/", {
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-      fetch("http://127.0.0.1:8000/participants/", {
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-      fetch("http://127.0.0.1:8000/registrations/", {
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-    ])
-      .then(async ([eRes, pRes, rRes]) => {
+    const loadData = async () => {
+      try {
+        const [eRes, pRes, rRes] = await Promise.all([
+          fetch("http://127.0.0.1:8000/events/", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          fetch("http://127.0.0.1:8000/participants/", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          fetch("http://127.0.0.1:8000/registrations/", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+        ]);
+
         const eData = await eRes.json();
         const pData = await pRes.json();
         const rData = await rRes.json();
-        setEvents(eData);
-        setParticipants(pData);
-        setRegistrations(rData);
-      })
-      .catch(() => console.log("Erreur chargement dashboard"))
-      .finally(() => setLoading(false));
+
+        // 🔹 Forcer tableau même si réponse paginée
+        setEvents(Array.isArray(eData) ? eData : eData.results || []);
+        setParticipants(Array.isArray(pData) ? pData : pData.results || []);
+        setRegistrations(Array.isArray(rData) ? rData : rData.results || []);
+      } catch (err) {
+        console.error("Erreur chargement dashboard", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (token) loadData();
   }, [token]);
 
   const handleLogout = () => {
@@ -106,20 +116,28 @@ function Dashboard() {
       <section className="recent-lists">
         <div>
           <h4>Derniers événements</h4>
-          <ul>
-            {events.slice(-3).reverse().map(e => (
-              <li key={e.id}>{e.title} ({e.status})</li>
-            ))}
-          </ul>
+          {events.length === 0 ? (
+            <p>Aucun événement disponible</p>
+          ) : (
+            <ul>
+              {events.slice(-3).reverse().map(e => (
+                <li key={e.id}>{e.title} ({e.status})</li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div>
           <h4>Derniers participants</h4>
-          <ul>
-            {participants.slice(-3).reverse().map(p => (
-              <li key={p.id}>{p.name}</li>
-            ))}
-          </ul>
+          {participants.length === 0 ? (
+            <p>Aucun participant disponible</p>
+          ) : (
+            <ul>
+              {participants.slice(-3).reverse().map(p => (
+                <li key={p.id}>{p.name}</li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
     </div>

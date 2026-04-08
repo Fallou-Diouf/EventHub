@@ -1,0 +1,163 @@
+/* eventDetails.css */
+
+/* Container principale */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Carte générale */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* Event Header */
+.event-header h2 {
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.event-desc {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.event-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  color: #777;
+}
+
+.status {
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  text-transform: capitalize;
+}
+
+.status.upcoming {
+  background: #e0f0ff;
+  color: #007bff;
+}
+
+.status.ongoing {
+  background: #fff4e0;
+  color: #ff8c00;
+}
+
+.status.completed {
+  background: #e0ffe0;
+  color: #28a745;
+}
+
+/* List of participants */
+.event-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  background: #fafafa;
+  transition: background 0.2s;
+}
+
+.event-card:hover {
+  background: #f0f8ff;
+}
+
+.event-info h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.event-info p {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.phone {
+  font-size: 0.85rem;
+  color: #007bff;
+}
+
+/* Actions buttons */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn.success {
+  background: #28a745;
+  color: white;
+}
+
+.btn.success:hover {
+  background: #1e7e34;
+}
+
+.btn.danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn.danger:hover {
+  background: #b02a37;
+}
+
+.btn.small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* Form select */
+select {
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-right: 0.5rem;
+  min-width: 200px;
+  transition: border 0.2s;
+}
+
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Form button */
+form .btn {
+  margin-top: 0.5rem;
+}

@@ -1,49 +1,22 @@
-
-### Get all events
-GET http://127.0.0.1:8000/events/4f31be20-38e5-425b-b595-90d67dd1180a
-
-###
-
-### Create event
-POST http://127.0.0.1:8000/events/
-Content-Type: application/json
-
-{
-  "title": "AI Conference",
-  "description": "Conference about Computer Vision",
-  "date": "2026-03-12",
-  "location": "Paris",
-  "status": "upcoming"
-}
-
-###
-
-POST http://127.0.0.1:8000/api/token/
+### LOGIN ADMIN
+POST http://127.0.0.1:8000/auth/login/
 Content-Type: application/json
 
 {
   "username": "admin",
-  "password": "admin1234"
+  "password": "admin"
 }
 
 ###
-POST http://127.0.0.1:8000/participants/
+### POST Create Event (ADMIN)
+POST http://127.0.0.1:8000/events/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1NjAyOTYwLCJpYXQiOjE3NzU2MDI2NjAsImp0aSI6IjM3NzczODVlZTVhMzRkMDdhNmM5YjkyNjFhNDM1OWYwIiwidXNlcl9pZCI6IjEiLCJyb2xlIjoidmlld2VyIn0.nnaHhqp87m21O6V9fz_RgQIbgs29u-oF9bvktpDahjA
 Content-Type: application/json
 
 {
-  "name": "fadal",
-  "email": "fadal@gmail.com",
-  "phone": "0725365412",
+  "title": "Hackathon AI",
+  "description": "Événement sur l'IA",
+  "date": "2026-05-01",
+  "location": "Paris",
+  "status": "upcoming"
 }
-
-###
-POST http://127.0.0.1:8000/api/token/
-Content-Type: application/json
-
-{
-  "username": "viewer",
-  "password": "viewer"
-}
-
-###
-POST http://127.0.0.1:8000/auth/login/

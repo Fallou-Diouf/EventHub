@@ -5,13 +5,11 @@ function PrivateRoute({ children, roles }) {
   const userRole = localStorage.getItem("role");
 
   if (!token) {
-    // pas connecté
     return <Navigate to="/" replace />;
   }
 
   if (roles && !roles.includes(userRole)) {
-    // rôle non autorisé
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return children;

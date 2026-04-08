@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../style/login.css"
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -19,19 +20,16 @@ function Login() {
       });
 
       const data = await response.json();
-
       if (response.ok) {
-        // Stocker le token
         localStorage.setItem("token", data.access);
-
-        // Extraire le rôle depuis le JWT
-        const payload = JSON.parse(atob(data.access.split(".")[1]));
-        localStorage.setItem("role", payload.role);
+        localStorage.setItem("role", data.role);
 
         navigate("/dashboard");
       } else {
         alert("Login échoué !");
       }
+
+
     } catch (error) {
       console.log("Erreur réseau", error);
     }

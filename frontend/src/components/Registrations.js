@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "../style/registrations.css"
 
 function Registrations() {
   const [registrations, setRegistrations] = useState([]);
