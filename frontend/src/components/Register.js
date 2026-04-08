@@ -70,8 +70,6 @@ function Register() {
         <button className="btn primary full">
           S'inscrire
         </button>
-
-        {/* 🔹 Lien DANS la card */}
         <p>
           Déjà un compte ?{" "}
           <span className="link" onClick={() => navigate("/")}>
